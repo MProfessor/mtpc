@@ -15,11 +15,9 @@ describe('Project Initialization', () => {
   });
 
   test('should create project with valid inputs', async () => {
-    // Mock user inputs
     inquirer.prompt.mockResolvedValueOnce({ template: testKey });
     inquirer.prompt.mockResolvedValueOnce({ projectName: 'test-project' });
     
-    // Mock download and exec
     download.mockImplementation((repo, path, opts, callback) => callback(null));
     exec.mockImplementation((cmd, opts, callback) => callback(null));
 
@@ -27,7 +25,7 @@ describe('Project Initialization', () => {
 
     expect(inquirer.prompt).toHaveBeenCalledTimes(2);
     expect(download).toHaveBeenCalledTimes(1);
-    expect(exec).toHaveBeenCalledTimes(2); // git init and npm install
+    expect(exec).toHaveBeenCalledTimes(2);
   });
 
   test('should handle download errors', async () => {
