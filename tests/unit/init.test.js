@@ -15,7 +15,7 @@ describe('Project Initialization', () => {
 
   test('should create project with valid inputs', async () => {
     // Mock user inputs
-    inquirer.prompt.mockResolvedValueOnce({ template: 'vue3-ts' });
+    inquirer.prompt.mockResolvedValueOnce({ template: 'vue2' });
     inquirer.prompt.mockResolvedValueOnce({ projectName: 'test-project' });
     
     // Mock download and exec
@@ -30,7 +30,7 @@ describe('Project Initialization', () => {
   });
 
   test('should handle download errors', async () => {
-    inquirer.prompt.mockResolvedValueOnce({ template: 'vue3-ts' });
+    inquirer.prompt.mockResolvedValueOnce({ template: 'vue2' });
     inquirer.prompt.mockResolvedValueOnce({ projectName: 'test-project' });
     
     download.mockImplementation((repo, path, opts, callback) => 

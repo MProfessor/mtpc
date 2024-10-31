@@ -14,7 +14,7 @@ describe('Project Creation Integration', () => {
 
     // Mock GitHub API
     nock('https://github.com')
-      .get('/your-username/vue3-ts-template/archive/main.zip')
+      .get('/vuejs/vue.git')
       .reply(200, 'mock template content');
   });
 
@@ -28,7 +28,7 @@ describe('Project Creation Integration', () => {
     const cli = path.join(__dirname, '../../bin/mtpc.js');
     
     // Mock user input
-    const input = 'vue3-ts\ntest-project\n';
+    const input = 'vue2\ntest-project\n';
     
     try {
       execSync(`node ${cli} init`, { 
