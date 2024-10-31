@@ -1,8 +1,9 @@
 const inquirer = require('inquirer');
 const download = require('download-git-repo');
-const fs = require('fs');
 const { exec } = require('child_process');
 const init = require('../../lib/init');
+const templates = require('../../lib/templates');
+const testKey = Object.keys(templates)[0];
 
 jest.mock('inquirer');
 jest.mock('download-git-repo');
@@ -15,7 +16,7 @@ describe('Project Initialization', () => {
 
   test('should create project with valid inputs', async () => {
     // Mock user inputs
-    inquirer.prompt.mockResolvedValueOnce({ template: 'vue2' });
+    inquirer.prompt.mockResolvedValueOnce({ template: testKey });
     inquirer.prompt.mockResolvedValueOnce({ projectName: 'test-project' });
     
     // Mock download and exec
@@ -30,7 +31,7 @@ describe('Project Initialization', () => {
   });
 
   test('should handle download errors', async () => {
-    inquirer.prompt.mockResolvedValueOnce({ template: 'vue2' });
+    inquirer.prompt.mockResolvedValueOnce({ template: testKey });
     inquirer.prompt.mockResolvedValueOnce({ projectName: 'test-project' });
     
     download.mockImplementation((repo, path, opts, callback) => 

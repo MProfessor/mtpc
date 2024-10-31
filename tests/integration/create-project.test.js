@@ -2,6 +2,8 @@ const path = require('path');
 const mockFs = require('mock-fs');
 const nock = require('nock');
 const { execSync } = require('child_process');
+const templates = require('../../lib/templates');
+const testKey = Object.keys(templates)[0];
 
 describe('Project Creation Integration', () => {
   const testDir = path.join(process.cwd(), 'test-project');
@@ -28,7 +30,7 @@ describe('Project Creation Integration', () => {
     const cli = path.join(__dirname, '../../bin/mtpc.js');
     
     // Mock user input
-    const input = 'vue2\ntest-project\n';
+    const input = testKey;
     
     try {
       execSync(`node ${cli} init`, { 
