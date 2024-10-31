@@ -9,6 +9,7 @@
     "mtpc": "./bin/mtpc.js"
   },
   "scripts": {
+    "init": "node ./bin/mtpc.js init",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"
